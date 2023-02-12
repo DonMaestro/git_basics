@@ -19,6 +19,25 @@ Shell history
    git checkout first_branch
    vim README.rst
 
+Shell histrory 2
+----------------
+
+.. code-block:: bash
+
+   git branch first_branch
+   git checkout first_branch
+   vim README.rst
+   ls
+   cat README.rst
+   git status
+   git add README.rst
+   git commit -m "feat(README.rst): add history"
+   git checkout master
+   git merge first_branch
+   vim README.rst
+   git status
+   git log --oneline --graph
+   git status
 
 Author
 ------
