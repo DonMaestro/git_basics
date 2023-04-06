@@ -77,19 +77,17 @@ TIP = """Next time call "{script} num" to set number of dishes."""
 def main(args):
     script, *args = args
 
-    """Gets called when run as a script."""
-    if len(args) > 1:
-        exit('Too many arguments. ' + TIP.format(script=script))
-    
+    print("use --help to view help")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-n", "--num", help="menu size", type=int)
+    args = parser.parse_args()
+
     num = DEF_CHOICE
-    if len(args) > 0:
-        num = int(args[0])
+    if args.num:
+        num = args.num
     
     dialog(num)
-
-    if len(args) < 1:
-        print('\tTip:', TIP.format(script=script))
-
 
 if __name__ == '__main__':
     import sys
