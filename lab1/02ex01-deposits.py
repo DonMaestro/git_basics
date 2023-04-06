@@ -51,10 +51,17 @@ def deposit(initial_sum, percent, fixed_period, set_period):
 
 def main(args):
     """Gets called when run as a script."""
-    if len(args) != 4 + 1:
+    if len(args) != 4 + 1 and len(args) != 3 + 1:
         exit(USAGE.format(script=args[0]))
 
     args = args[1:]
+
+    if len(args) == 3:
+        percent, fixed_period, set_period = map(float, args)
+        res = deposit(1, percent, fixed_period, set_period) - 1;
+        print(f'{round(res,6)}%')
+        return()
+
     initial_sum, percent, fixed_period, set_period = map(float, args)
 
     # same as
@@ -63,7 +70,13 @@ def main(args):
     # ...
 
     res = deposit(initial_sum, percent, fixed_period, set_period)
-    print(res)
+    print(int(set_period), ':', res)
+    res = deposit(initial_sum, percent, fixed_period, 1)
+    print(1, ':', res)
+    res = deposit(initial_sum, percent, fixed_period, 5)
+    print(5, ':', res)
+    res = deposit(initial_sum, percent, fixed_period, 10)
+    print(10, ':', res)
 
 
 if __name__ == '__main__':
